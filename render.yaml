@@ -1,17 +1,24 @@
 services:
   - name: rabbitmq
+    type: web
+    plan: free
     image: rabbitmq:3
     env: []
     ports:
       - 5672:5672
 
   - name: selenium
+    type: web
+    plan: free
     image: selenium/standalone-chrome:latest
     env: []
     plan: starter
     ports: []
 
   - name: producer
+    type: web
+    plan: free
+    runtime: go
     image: fabrice45/assignments_producer:latest
     env:
       - key: RABBITMQ_URL
@@ -22,6 +29,9 @@ services:
       - 3000:3000
 
   - name: umucyo-consumer
+    type: web
+    plan: free
+    runtime: node
     image: fabrice45/umucyo_consumer:latest
     env:
       - key: SELENIUM_HOST
@@ -39,6 +49,9 @@ services:
       - 3001:3001
 
   - name: verama-consumer
+    type: web
+    plan: free
+    runtime: python
     image: fabrice45/verama_consumer:latest
     env:
       - key: RABBITMQ_HOST
@@ -52,6 +65,9 @@ services:
       - 3002:3002
 
   - name: assignments
+    type: web
+    plan: free
+    runtime: go
     image: fabrice45/assignments:latest
     env: []
     ports:
