@@ -1,8 +1,7 @@
 services:
   - name: rabbitmq
-    image: rabbitmq
-    tag: "3"
-    env: []
+    image: 
+      url: rabbitmq:3
     ports:
       - 5672:5672
     plan: starter
