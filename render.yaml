@@ -2,6 +2,7 @@ services:
   - name: rabbitmq
     image: 
       url: rabbitmq:3
+    env: docker
     plan: starter
     type: web
 
@@ -17,54 +18,39 @@ services:
     envVars:
       - key: RABBITMQ_URL
         value: amqp://guest:guest@rabbitmq:5672/
-    envFrom:
-      - service: rabbitmq
-    ports:
-      - 3000:3000
     plan: starter
     type: web
 
   - name: umucyo-consumer
-    image: fabrice45/umucyo_consumer
-    tag: latest
-    env:
+    image: 
+      url: fabrice45/umucyo_consumer:latest
+    envVars:
       - key: SELENIUM_HOST
         value: selenium
       - key: SELENIUM_PORT
         value: "4444"
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672/
-    envFrom:
-      - service: rabbitmq
     dependsOn:
       - name: rabbitmq
       - name: selenium
-    ports:
-      - 3001:3001
     plan: starter
     type: web
 
   - name: verama-consumer
-    image: fabrice45/verama_consumer
-    tag: latest
-    env:
+    image: 
+      url: fabrice45/verama_consumer:latest
+    envVars:
       - key: RABBITMQ_HOST
         value: rabbitmq
-    envFrom:
-      - service: rabbitmq
     dependsOn:
       - name: rabbitmq
       - name: producer
-    ports:
-      - 3002:3002
     plan: starter
     type: web
 
   - name: assignments
-    image: fabrice45/assignments
-    tag: latest
-    env: []
-    ports:
-      - 4001:4001
+    image: 
+      url: fabrice45/assignments:latest
     plan: starter
     type: web
