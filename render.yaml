@@ -66,4 +66,10 @@ services:
     type: web
 
   - name: assignments
-    image: fabrice45/assignment
+    image: fabrice45/assignments
+    tag: latest
+    env: []
+    ports:
+      - 4001:4001
+    plan: starter
+    type: web
