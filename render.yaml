@@ -31,9 +31,6 @@ services:
         value: "4444"
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672/
-    dependsOn:
-      - name: rabbitmq
-      - name: selenium
     plan: starter
     type: web
 
@@ -43,9 +40,6 @@ services:
     envVars:
       - key: RABBITMQ_HOST
         value: rabbitmq
-    dependsOn:
-      - name: rabbitmq
-      - name: producer
     plan: starter
     type: web
 
