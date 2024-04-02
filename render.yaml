@@ -66,4 +66,4 @@ services:
     type: web
 
   - name: assignments
-    image: fabrice45
+    image: fabrice45/assignment
