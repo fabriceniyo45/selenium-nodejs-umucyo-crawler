@@ -2,8 +2,8 @@ services:
   - name: rabbitmq
     image: 
       url: rabbitmq:3
-    ports:
-      - 5672:5672
+    port: 5672
+    hostport: 5672:5672
     plan: starter
     type: web
 
