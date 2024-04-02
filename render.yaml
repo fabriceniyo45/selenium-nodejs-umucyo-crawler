@@ -1,8 +1,6 @@
 services:
   - name: rabbitmq
-    image: 
-      name: rabbitmq
-      tag: 3
+    image: rabbitmq:3
     env: []
     ports:
       - 5672:5672
@@ -10,18 +8,14 @@ services:
     type: web
 
   - name: selenium
-    image: 
-      name: selenium/standalone-chrome
-      tag: latest
+    image: selenium/standalone-chrome:latest
     env: []
     ports: []
     plan: free
     type: web
 
   - name: producer
-    image: 
-      name: fabrice45/assignments_producer
-      tag: latest
+    image: fabrice45/assignments_producer:latest
     env:
       - key: RABBITMQ_URL
         value: amqp://guest:guest@rabbitmq:5672/
@@ -33,9 +27,7 @@ services:
     type: web
 
   - name: umucyo-consumer
-    image: 
-      name: fabrice45/umucyo_consumer
-      tag: latest
+    image: fabrice45/umucyo_consumer:latest
     env:
       - key: SELENIUM_HOST
         value: selenium
@@ -54,9 +46,7 @@ services:
     type: web
 
   - name: verama-consumer
-    image: 
-      name: fabrice45/verama_consumer
-      tag: latest
+    image: fabrice45/verama_consumer:latest
     env:
       - key: RABBITMQ_HOST
         value: rabbitmq
@@ -71,9 +61,7 @@ services:
     type: web
 
   - name: assignments
-    image: 
-      name: fabrice45/assignments
-      tag: latest
+    image: fabrice45/assignments:latest
     env: []
     ports:
       - 4001:4001
