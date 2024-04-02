@@ -2,7 +2,7 @@ services:
   - name: rabbitmq
     type: web
     plan: free
-    image: rabbitmq:3
+    image: rabbitmq
     env: []
     ports:
       - 5672:5672
@@ -12,7 +12,6 @@ services:
     plan: free
     image: selenium/standalone-chrome:latest
     env: []
-    plan: starter
     ports: []
 
   - name: producer
